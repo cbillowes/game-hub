@@ -3,11 +3,13 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 const GameGrid = () => {
-  const { games, error } = useGames()
+  const { games, error } = useGames();
 
   return (
     <>
@@ -18,11 +20,21 @@ const GameGrid = () => {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-      <ul>
-        {games.map(({ id, name }) => (
-          <li key={id}>{name}</li>
+      <SimpleGrid
+        columns={{
+          base: 1,
+          sm: 1,
+          md: 2,
+          lg: 3,
+          xl: 4,
+        }}
+        spacing="10px"
+        padding="10px"
+      >
+        {games.map((game) => (
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };
