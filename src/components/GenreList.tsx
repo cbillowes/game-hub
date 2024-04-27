@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -19,38 +20,43 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
   if (isLoading) return <SkeletonText noOfLines={8} spacing={4} />;
 
   return (
-    <List>
-      {genres.map((genre) => (
-        <ListItem key={genre.id} paddingY={2}>
-          <HStack
-            clipPath="polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)"
-            textOverflow="ellipsis"
-            padding={2}
-            borderRadius={8}
-            backgroundColor={
-              selectedGenre?.id === genre.id ? "crimson" : "transparent"
-            }
-          >
-            <Image
-              boxSize="32px"
+    <>
+      <Heading as="h2" fontSize="2xl" marginBottom={2}>
+        Genres
+      </Heading>
+      <List>
+        {genres.map((genre) => (
+          <ListItem key={genre.id} paddingY={2}>
+            <HStack
+              clipPath="polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)"
+              textOverflow="ellipsis"
+              padding={2}
               borderRadius={8}
-              objectFit="cover"
-              src={getCroppedImageUrl(genre.image_background)}
-              alt={genre.name}
-            />
-            <Button
-              fontSize="lg"
-              variant="link"
-              whiteSpace="normal"
-              textAlign="left"
-              onClick={() => onSelectedGenre(genre)}
+              backgroundColor={
+                selectedGenre?.id === genre.id ? "crimson" : "transparent"
+              }
             >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
+                src={getCroppedImageUrl(genre.image_background)}
+                alt={genre.name}
+              />
+              <Button
+                fontSize="lg"
+                variant="link"
+                whiteSpace="normal"
+                textAlign="left"
+                onClick={() => onSelectedGenre(genre)}
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
