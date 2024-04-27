@@ -21,13 +21,13 @@ const SortSelector = ({ selectedSortOrder, onSelectedSortOrder }: Props) => {
     { value: "-rating", label: "Average rating" },
   ];
 
+  const sortOrder =
+    sortOrders.find((o) => o.value === selectedSortOrder)?.label || "Relevance";
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronCompactDown />}>
-        Order by:{" "}
-        {selectedSortOrder
-          ? sortOrders.find((o) => o.value === selectedSortOrder)?.label
-          : "Relevance"}
+        Order by: {sortOrder}
       </MenuButton>
       <MenuList>
         {sortOrders.map((option) => (
