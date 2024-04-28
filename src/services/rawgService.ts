@@ -1,6 +1,6 @@
 import ApiClient from "./apiClient";
 
-export interface Result<T> {
+export interface Response<T> {
   count: number;
   next: number | null;
   previous: number | null;
@@ -9,11 +9,11 @@ export interface Result<T> {
 
 class RawgService<T> {
   endpoint: string;
-  client: ApiClient<Result<T>>;
+  client: ApiClient<Response<T>>;
 
   constructor(endpoint: string) {
     this.endpoint = endpoint;
-    this.client = new ApiClient<Result<T>>(endpoint);
+    this.client = new ApiClient<Response<T>>(endpoint);
   }
 
   getAll = async () => {
