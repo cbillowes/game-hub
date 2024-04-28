@@ -15,7 +15,7 @@ class ApiClient<T> {
   }
 
   getAll = async () => {
-    const response = await apiClient.get<T[]>(this.endpoint);
+    const response = await apiClient.get<T>(this.endpoint);
     return response.data;
   };
 }

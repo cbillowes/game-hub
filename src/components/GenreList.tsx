@@ -25,7 +25,7 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {genres.map((genre) => (
+        {genres?.map((genre) => (
           <ListItem key={genre.id} paddingY={2}>
             <HStack
               clipPath="polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)"
