@@ -9,7 +9,6 @@ const useGenres = () => {
   } = useQuery({
     queryKey: ["genres"],
     queryFn: genreService.getAll,
-    retry: 0,
   });
   return { genres, isLoading, error };
 };
