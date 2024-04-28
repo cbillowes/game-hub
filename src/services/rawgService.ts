@@ -16,8 +16,8 @@ class RawgService<T> {
     this.client = new ApiClient<Response<T>>(endpoint);
   }
 
-  getAll = async () => {
-    const response = await this.client.getAll();
+  getAll = async (params: any) => {
+    const response = await this.client.getAll(params);
     return response.results;
   };
 }
