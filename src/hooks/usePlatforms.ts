@@ -8,7 +8,7 @@ const usePlatforms = () => {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["genres"],
+    queryKey: ["platforms"],
     queryFn: platformService.getAll,
     initialData,
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
